@@ -88,20 +88,20 @@ int main() {
 
       .setname("Compatible dimensions")
       //distance:
-      .CHECK_EQUALS(dcm==dm, true);
-      .CHECK_EQUALS(dm2==dkm, true);
-      .CHECK_EQUALS(dkm==dm2, true);
-      .CHECK_EQUALS(dm==dc, true);
+      .CHECK_EQUAL(dcm==dm, true);
+      .CHECK_EQUAL(dm2==dkm, true);
+      .CHECK_EQUAL(dkm==dm2, true);
+      .CHECK_EQUAL(dm==dc, true);
       //time:
-      .CHECK_EQUALS(ts==tm, true);
-      .CHECK_EQUALS(tm2==th, true);
-      .CHECK_EQUALS(th==tm2, true);
-      .CHECK_EQUALS(tm==ts, true);
+      .CHECK_EQUAL(ts==tm, true);
+      .CHECK_EQUAL(tm2==th, true);
+      .CHECK_EQUAL(th==tm2, true);
+      .CHECK_EQUAL(tm==ts, true);
       //mass:
-      .CHECK_EQUALS(mg==mkg, true);
-      .CHECK_EQUALS(mkg2==mt, true);
-      .CHECK_EQUALS(mt==mkg2, true);
-      .CHECK_EQUALS(mkg==mg, true);
+      .CHECK_EQUAL(mg==mkg, true);
+      .CHECK_EQUAL(mkg2==mt, true);
+      .CHECK_EQUAL(mt==mkg2, true);
+      .CHECK_EQUAL(mkg==mg, true);
 
       .setname("Math calculations")
       .CHECK_OUTPUT((dcm+=dm), "200[cm]")
@@ -116,18 +116,18 @@ int main() {
       
 
       .setname("Compatible dimensions")
-      .CHECK_EQUALS(mg==mkg, true);
-      .CHECK_EQUALS(mkg2==mt, true);
-      .CHECK_EQUALS(mt==mkg2, true);
-      .CHECK_EQUALS(mkg==mg, true);
-      .CHECK_EQUALS(mg==mkg, true);
-      .CHECK_EQUALS(mkg2==mt, true);
-      .CHECK_EQUALS(mt==mkg2, true);
-      .CHECK_EQUALS(mkg==mg, true);
-      .CHECK_EQUALS(mg==mkg, true);
-      .CHECK_EQUALS(mkg2==mt, true);
-      .CHECK_EQUALS(mt==mkg2, true);
-      .CHECK_EQUALS(mkg==mg, true);
+      .CHECK_EQUAL(mg==mkg, true);
+      .CHECK_EQUAL(mkg2==mt, true);
+      .CHECK_EQUAL(mt==mkg2, true);
+      .CHECK_EQUAL(mkg==mg, true);
+      .CHECK_EQUAL(mg==mkg, true);
+      .CHECK_EQUAL(mkg2==mt, true);
+      .CHECK_EQUAL(mt==mkg2, true);
+      .CHECK_EQUAL(mkg==mg, true);
+      .CHECK_EQUAL(mg==mkg, true);
+      .CHECK_EQUAL(mkg2==mt, true);
+      .CHECK_EQUAL(mt==mkg2, true);
+      .CHECK_EQUAL(mkg==mg, true);
 
 
 

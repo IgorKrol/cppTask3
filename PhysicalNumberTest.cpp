@@ -146,7 +146,7 @@ int main() {
       .CHECK_OUTPUT((mkg2--), "2[kg]")
       .CHECK_OUTPUT((--mkg2), "0[kg]")
       
-      .CHECK_OK(dcm<<dcm)
+      // .CHECK_OK(dcm<<dcm)
 
       .setname("Exceptions")
       // .CHECK_THROWS(istringstream("7") >> IOkg)

@@ -87,7 +87,7 @@ int main() {
       
 
       .setname("Dimensions Equality")
-      distance:
+      //distance:
       .CHECK_OUTPUT((dcm==dm), "true")
       .CHECK_OUTPUT((dm2==dkm), "true")
       .CHECK_OUTPUT((dkm==dm2), "true")

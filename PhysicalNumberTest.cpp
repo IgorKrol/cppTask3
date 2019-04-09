@@ -108,7 +108,7 @@ int main() {
       .CHECK_OUTPUT(dcm, "200[cm]")
       .CHECK_OUTPUT(dkm+dcm, "2.002[km]")
       .CHECK_OUTPUT(dm+dm2, "1001[m]")
-      .CHECK_OUTPUT(dcm+=dcm, "400[cm]")
+      .CHECK_OUTPUT((dcm+=dcm), "400[cm]")
       .CHECK_OUTPUT(dcm+km5, "500400[cm]")
       .CHECK_OUTPUT((dcm++), "500401[cm]")
       .CHECK_OUTPUT(dcm-m5, "-100[cm]")

@@ -52,8 +52,8 @@ int main() {
     PhysicalNumber kg5(5, Unit::KG);
     PhysicalNumber t5(5, Unit::TON);
 
-
-
+    //IO
+    PhysicalNumber IOkg(1, Unit::KG);
 
     testcase
     .setname("Basic output")
@@ -92,6 +92,10 @@ int main() {
       .CHECK_OUTPUT((dm2==dkm), "true")
       .CHECK_OUTPUT((dkm==dm2), "true")
       .CHECK_OUTPUT((dm==dcm), "true")
+      .CHECK_OUTPUT((dm2<dcm), "false")
+      .CHECK_OUTPUT((dm!=dcm), "false")
+      .CHECK_OUTPUT((dm>=dcm), "true")
+      .CHECK_OUTPUT((dm<=dcm), "true")
       //time:
       .CHECK_OUTPUT((ts==tm), "true")
       .CHECK_OUTPUT((tm2==th), "true")
@@ -110,11 +114,59 @@ int main() {
       .CHECK_OUTPUT(dm+dm2, "1001[m]")
       .CHECK_OUTPUT((dcm+=dcm), "400[cm]")
       .CHECK_OUTPUT(dcm+km5, "500400[cm]")
-      .CHECK_OUTPUT((dcm++), "500401[cm]")
-      .CHECK_OUTPUT((++dcm), "500402[cm]")
-      .CHECK_OUTPUT(dcm-m5, "-100[cm]")
-      .CHECK_OUTPUT(m5-dcm, "100[cm]")
-      .CHECK_OUTPUT((dcm-=m5), "500401[cm]")
+      .CHECK_OUTPUT((dcm++), "400[cm]")
+      .CHECK_OUTPUT(dcm, "400[cm]")
+      .CHECK_OUTPUT((++dcm), "402[cm]")
+      .CHECK_OUTPUT(dcm-m5, "-98[cm]")
+      .CHECK_OUTPUT(m5-dcm, "98[cm]")
+      .CHECK_OUTPUT((dcm-=m5), "-98[cm]")
+      .CHECK_OUTPUT((-dcm), "98[cm]")
+      .CHECK_OUTPUT((dcm--), "-98[cm]")
+      .CHECK_OUTPUT(dcm, "-99[cm]")
+      .CHECK_OUTPUT((--dcm), "-100[cm]")
+      
+      .CHECK_OUTPUT(ts+sec5, "65[sec]")
+      .CHECK_OUTPUT((ts++), "60[sec]")
+      .CHECK_OUTPUT(++ts, "62[sec]")
+      .CHECK_OUTPUT((-ts), "-62[sec]")
+      .CHECK_OUTPUT(ts-=tm, "2[sec]")
+      .CHECK_OUTPUT((--ts), "1[sec]")
+      .CHECK_OUTPUT((ts--), "1[sec]")
+      .CHECK_OUTPUT(th+ts, "1[h]")
+      .CHECK_OUTPUT(th-ts, "1[h]")
+
+      .CHECK_OUTPUT(kg5+g5, "5.005[kg]")
+      .CHECK_OUTPUT(t5+kg5, "5.005[ton]")
+      .CHECK_OUTPUT(g5+t5, "5000005[g]")
+      .CHECK_OUTPUT((mkg+=kg5), "6[kg]")
+      .CHECK_OUTPUT((mkg-=kg5), "1[kg]")
+      .CHECK_OUTPUT(t5-mt, "4[ton]")
+      .CHECK_OUTPUT(mt-t5, "-4[ton]")
+      .CHECK_OUTPUT(-(mt-t5), "4[ton]")
+      .CHECK_OUTPUT((mkg2--), "2[kg]")
+      .CHECK_OUTPUT((--mkg2), "0[kg]")
+      
+      .CHECK_OK(dcm<<dcm)
+
+      .setname("Exceptions")
+      .CHECK_THROWS(istringstream("7") >> IOkg)
+      .CHECK_THROWS(istringstream("70]") >> IOkg)
+      .CHECK_THROWS(istringstream("70kg]") >> IOkg)
+      .CHECK_THROWS(istringstream("kg") >> IOkg)
+      .CHECK_THROWS(mkg==tm)
+      .CHECK_THROWS(ts=>dcm)
+      .CHECK_THROWS(mg<=th)
+      .CHECK_THROWS(mg!=th)
+
+      
+      
+      
+
+
+
+
+
+
       
 
 

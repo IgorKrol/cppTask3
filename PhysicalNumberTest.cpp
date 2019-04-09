@@ -91,7 +91,7 @@ int main() {
       .CHECK_OUTPUT((dcm==dm), "true")
       .CHECK_OUTPUT((dm2==dkm), "true")
       .CHECK_OUTPUT((dkm==dm2), "true")
-      .CHECK_OUTPUT((dm==dc), "true")
+      .CHECK_OUTPUT((dm==dcm), "true")
       //time:
       .CHECK_OUTPUT((ts==tm), "true")
       .CHECK_OUTPUT((tm2==th), "true")

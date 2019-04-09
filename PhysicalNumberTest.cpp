@@ -149,16 +149,16 @@ int main() {
       // .CHECK_OK(dcm<<dcm)
 
       .setname("Exceptions")
-      // .CHECK_THROWS(istringstream("7") >> IOkg)
-      // .CHECK_THROWS(istringstream("70]") >> IOkg)
-      // .CHECK_THROWS(istringstream("70kg]") >> IOkg)
-      // .CHECK_THROWS(istringstream("kg") >> IOkg)
-      .CHECK_THROWS(mkg==tm)
-      .CHECK_THROWS(ts=>dcm)
-      .CHECK_THROWS(mg<=th)
-      .CHECK_THROWS(mg!=th)
-      .CHECK_THROWS(mg+=th)
-      .CHECK_THROWS(mg-=th)
+      .CHECK_THROWS(istringstream("7") >> IOkg)
+      .CHECK_THROWS(istringstream("70]") >> IOkg)
+      .CHECK_THROWS(istringstream("70kg]") >> IOkg)
+      .CHECK_THROWS(istringstream("kg") >> IOkg)
+      // .CHECK_THROWS(mkg==tm)
+      // .CHECK_THROWS(ts=>dcm)
+      // .CHECK_THROWS(mg<=th)
+      // .CHECK_THROWS(mg!=th)
+      // .CHECK_THROWS(mg+=th)
+      // .CHECK_THROWS(mg-=th)
       
 
 

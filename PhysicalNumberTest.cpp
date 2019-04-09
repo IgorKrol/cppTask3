@@ -86,22 +86,22 @@ int main() {
     
       
 
-      .setname("Compatible dimensions")
+      .setname("Dimensions Equality")
       //distance:
-      .CHECK_EQUAL(dcm==dm, true);
-      .CHECK_EQUAL(dm2==dkm, true);
-      .CHECK_EQUAL(dkm==dm2, true);
-      .CHECK_EQUAL(dm==dc, true);
+      .CEHCK_OUTPUT(dcm==dm, "true");
+      .CEHCK_OUTPUT(dm2==dkm, "true");
+      .CEHCK_OUTPUT(dkm==dm2, "true");
+      .CEHCK_OUTPUT(dm==dc, "true");
       //time:
-      .CHECK_EQUAL(ts==tm, true);
-      .CHECK_EQUAL(tm2==th, true);
-      .CHECK_EQUAL(th==tm2, true);
-      .CHECK_EQUAL(tm==ts, true);
+      .CEHCK_OUTPUT(ts==tm, "true");
+      .CEHCK_OUTPUT(tm2==th, "true");
+      .CEHCK_OUTPUT(th==tm2, "true");
+      .CEHCK_OUTPUT(tm==ts, "true");
       //mass:
-      .CHECK_EQUAL(mg==mkg, true);
-      .CHECK_EQUAL(mkg2==mt, true);
-      .CHECK_EQUAL(mt==mkg2, true);
-      .CHECK_EQUAL(mkg==mg, true);
+      .CEHCK_OUTPUT(mg==mkg, "true");
+      .CEHCK_OUTPUT(mkg2==mt, "true");
+      .CEHCK_OUTPUT(mt==mkg2, "true");
+      .CEHCK_OUTPUT(mkg==mg, "true");
 
       .setname("Math calculations")
       .CHECK_OUTPUT((dcm+=dm), "200[cm]")
@@ -116,18 +116,18 @@ int main() {
       
 
       .setname("Compatible dimensions")
-      .CHECK_EQUAL(mg==mkg, true);
-      .CHECK_EQUAL(mkg2==mt, true);
-      .CHECK_EQUAL(mt==mkg2, true);
-      .CHECK_EQUAL(mkg==mg, true);
-      .CHECK_EQUAL(mg==mkg, true);
-      .CHECK_EQUAL(mkg2==mt, true);
-      .CHECK_EQUAL(mt==mkg2, true);
-      .CHECK_EQUAL(mkg==mg, true);
-      .CHECK_EQUAL(mg==mkg, true);
-      .CHECK_EQUAL(mkg2==mt, true);
-      .CHECK_EQUAL(mt==mkg2, true);
-      .CHECK_EQUAL(mkg==mg, true);
+      .CEHCK_OUTPUT(mg==mkg, "true");
+      .CEHCK_OUTPUT(mkg2==mt, "true");
+      .CEHCK_OUTPUT(mt==mkg2, "true");
+      .CEHCK_OUTPUT(mkg==mg, "true");
+      .CEHCK_OUTPUT(mg==mkg, "true");
+      .CEHCK_OUTPUT(mkg2==mt, "true");
+      .CEHCK_OUTPUT(mt==mkg2, "true");
+      .CEHCK_OUTPUT(mkg==mg, "true");
+      .CEHCK_OUTPUT(mg==mkg, "true");
+      .CEHCK_OUTPUT(mkg2==mt, "true");
+      .CEHCK_OUTPUT(mt==mkg2, "true");
+      .CEHCK_OUTPUT(mkg==mg, "true");
 
 
 

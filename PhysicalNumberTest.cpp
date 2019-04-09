@@ -105,7 +105,7 @@ int main() {
 
       .setname("Math calculations")
       .CHECK_OUTPUT((dcm+=dm), "200[cm]")
-      .CHECK_OUTPUT(dcm), "200[cm]")
+      .CHECK_OUTPUT(dcm, "200[cm]")
       .CHECK_OUTPUT(dkm+dcm, "2.002[km]")
       .CHECK_OUTPUT(dm+dm2, "1001[m]")
       .CHECK_OUTPUT(dcm+=dcm, "400[cm]")

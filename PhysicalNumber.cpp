@@ -131,7 +131,7 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 				return pNum2->_num*3600;
 			
 			else
-			return pNum2->_num*100000;	
+				return pNum2->_num*100000;	
 			
 		break;
 		// need to convert 3rd option to 2nd
@@ -166,13 +166,13 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 		// need to convert 1st option to 3rd
 		case 2:
 			if(pNum2->unit == 0)
-			return pNum2->num/100000;
+				return pNum2->num/100000;
 		
 			else if(pNum2->unit == 3)
-			pnum2->num/3600;
+				return pnum2->num/3600;
 		
 			else 
-			pNum2->num/100000;
+				return pNum2->num/100000;
 		
 		break;
 	}

@@ -191,7 +191,6 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 	else{
 		temp2 = temp.substr(1, temp.length()-2);
 
-<<<<<<< HEAD
 			if(temp2 == "cm") {pNum._num = t; pNum._type = CM;}
 			else if(temp2 == "m") {pNum._num = t; pNum._type = M;}
 			else if(temp2 == "km") {pNum._num = t; pNum._type = KM;}
@@ -202,19 +201,6 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 			else if(temp2 == "kg") {pNum._num = t; pNum._type = KG;}
 			else if(temp2 == "ton") {pNum._num = t; pNum._type = TON;}
 			else {cerr << "Invalid input";}
-=======
-		switch(temp2){
-			case(temp2 == "cm"): {pNum._num = t; pNum._type = CM; break;}
-			case(temp2 == "m"): {pNum._num = t; pNum._type = M; break;}
-			case(temp2 == "km"): {pNum._num = t; pNum._type = KM; break;}
-			case(temp2 == "sec"): {pNum._num = t; pNum._type = SEC; break;}
-			case(temp2 == "min"): {pNum._num = t; pNum._type = MIN; break;}
-			case(temp2 == "hour"): {pNum._num = t; pNum._type = HOUR; break;}
-			case(temp2 == "g"): {pNum._num = t; pNum._type = G; break;}
-			case(temp2 == "kg"): {pNum._num = t; pNum._type = KG; break;}
-			case(temp2 == "ton"): {pNum._num = t; pNum._type = TON; break;}
-			default: {cerr << "Invalid input"; break;}
->>>>>>> e7f91b73e8ae7dca88002f1bfd23c0745220e7e5
 		}
     return is;
 }

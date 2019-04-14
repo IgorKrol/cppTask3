@@ -25,22 +25,37 @@ const PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
     }
     
     Unit nType = this._type;
-    double sum = 0;
-    sum = this->_num + convert(this,pNum);
+    double sum = this->_num + convert(this,pNum);
     return PhysicalNumber(sum,nType);
 
 }
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
-    return *this;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+    double sum = this->_num + convert(this,pNum);
+	this->_num = sum;
+	return *this;
 }
 const PhysicalNumber& PhysicalNumber::operator-(){
-    return *this;
+    return PhysicalNumber(-this->_num, this->_type);
 }
 const PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
-    return *this;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+    
+    Unit nType = this._type;
+    double sum = this->_num - convert(this,pNum);
+    return PhysicalNumber(sum,nType);
 }
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
-    return *this;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+    double sum = this->_num - convert(this,pNum);
+	this->_num = sum;
+	return *this;
 }
 
 /* Comparor operators */

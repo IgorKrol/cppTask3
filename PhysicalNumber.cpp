@@ -137,12 +137,14 @@ PhysicalNumber& PhysicalNumber::operator--(){
     return *this;
 }
 const PhysicalNumber PhysicalNumber::operator++(int pNum){
-	this->_num++;
-    return *this;
+	PhysicalNumber cpy(this._num,this._type);
+	cpy._num++;
+    return cpy;
 }
 const PhysicalNumber PhysicalNumber::operator--(int pNum){
-    this->_num--;
-    return *this;
+    PhysicalNumber cpy(this._num,this._type);
+	cpy._num--;
+    return cpy;
 }
 
 /* I/O operators */

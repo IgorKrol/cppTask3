@@ -188,7 +188,6 @@ string unitType(Unit unit){
 		case 8: type = "TON";
 		break;
 	}
-
 	return type;
 }
 
@@ -199,7 +198,7 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 	int ans;
 
 	switch(type){
-		// need to convert 3rd option to the first
+		// Converts 3rd option to the 1st
 		case -2: 
 			if(pNum2->unit == 2) 
 				return pNum2->num*100000;
@@ -209,9 +208,9 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 			
 			else
 				return pNum2->_num*100000;	
-			
 		break;
-		// need to convert 3rd option to 2nd
+
+		// Converts 3rd type to the 2nd
 		case -1: 
 			if(pNum2->unit == 2)
 				return pNum2->_num*1000;
@@ -220,15 +219,14 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 				return pNum2->_num*60;
 		
 			else 
-				return pNum2->num*1000;
-			
+				return pNum2->num*1000;	
 		break;
 
-		// no need for conversion
+		// No need for conversion
 		case 0: return pNum2->num;
 		break;
 
-		// need to convert 2nd option to 1st
+		// Converts 2nd type to the 1st
 		case 1: 
 			if(pNum2->unit == 1)
 				return pNum2->_num*1000;
@@ -240,7 +238,7 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 				return pNum2->num*1000;
 		break;
 
-		// need to convert 1st option to 3rd
+		// Converts 1st type to  the 3rd
 		case 2:
 			if(pNum2->unit == 0)
 				return pNum2->num/100000;
@@ -250,7 +248,6 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 		
 			else 
 				return pNum2->num/100000;
-		
 		break;
 	}
 }

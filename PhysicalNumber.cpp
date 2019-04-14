@@ -151,23 +151,23 @@ const PhysicalNumber PhysicalNumber::operator--(int pNum){
 std::ostream& ariel::operator<<(std::ostream& os, const PhysicalNumber& pNum){
 	string sType;
 	switch(pNum._type){
-		case 0: sType = "CM";
+		case 0: sType = "cm";
 		break;
-		case 1: sType = "M";
+		case 1: sType = "m";
 		break;
-		case 2: sType = "KM";
+		case 2: sType = "km";
 		break;
-		case 3: sType = "SEC";
+		case 3: sType = "sec";
 		break;
-		case 4: sType = "MIN";
+		case 4: sType = "min";
 		break;
-		case 5: sType = "HOUR";
+		case 5: sType = "hour";
 		break;
-		case 6: sType = "G";
+		case 6: sType = "g";
 		break;
-		case 7: sType = "KG";
+		case 7: sType = "kg";
 		break;
-		case 8: sType = "TON";
+		case 8: sType = "ton";
 		break;
 	}
 	os<<pNum._num << "[" << sType << "]";
@@ -271,4 +271,5 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 				return pNum2._num/100000;
 		break;
 	}
+	return 0;
 }

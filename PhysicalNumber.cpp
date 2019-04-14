@@ -26,7 +26,7 @@ const PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
     
     Unit nType = this->_type;
     double sum = this->_num + convert(*this,pNum);
-    return PhysicalNumber(sum,nType);
+    return *new PhysicalNumber(sum,nType);
 
 }
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
@@ -38,7 +38,7 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
 	return *this;
 }
 const PhysicalNumber& PhysicalNumber::operator-(){
-    return PhysicalNumber(-this->_num, this->_type);
+    return *new PhysicalNumber(-this->_num, this->_type);
 }
 const PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
     if(!isSameDimension(*this,pNum)) {
@@ -47,7 +47,7 @@ const PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
     
     Unit nType = this->_type;
     double sum = this->_num - convert(*this,pNum);
-    return PhysicalNumber(sum,nType);
+    return *new PhysicalNumber(sum,nType);
 }
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
     if(!isSameDimension(*this,pNum)) {

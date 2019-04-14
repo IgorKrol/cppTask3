@@ -174,6 +174,36 @@ std::ostream& ariel::operator<<(std::ostream& os, const PhysicalNumber& pNum){
     return os;
 }
 std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
+	
+	string temp, temp2;
+	double t;
+
+	input>>t;
+	input>>temp;
+
+	if(t < 0){
+		cerr << "This number is invalid";
+	}
+	else if(s.front() != '[' && s.back() != ']'){
+		cerr << "Invalid input";
+	}
+
+	else{
+		temp2 = temp.substr(1, s.length()-2);
+
+		switch(temp2){
+			case(temp2 == "cm"): {pNum._num = CM; pNum._type = temp2;}
+			case(temp2 == "m"): {pNum._num = M; pNum._type = temp2;}
+			case(temp2 == "km"): {pNum._num = KM; pNum._type = temp2;}
+			case(temp2 == "sec"): {pNum._num = SEC; pNum._type = temp2;}
+			case(temp2 == "min"): {pNum._num = MIN; pNum._type = temp2;}
+			case(temp2 == "hour"): {pNum._num = HOUR; pNum._type = temp2;}
+			case(temp2 == "g"): {pNum._num = G; pNum._type = temp2;}
+			case(temp2 == "kg"): {pNum._num = KG; pNum._type = temp2;}
+			case(temp2 == "ton"): {pNum._num = TON; pNum._type = temp2;}
+			case default: cerr << "Invalid input";
+		}
+	}
     return is;
 }
 

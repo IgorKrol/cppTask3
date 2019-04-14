@@ -94,6 +94,8 @@ const PhysicalNumber PhysicalNumber::operator--(int pNum){
 
 /* I/O operators */
 std::ostream& ariel::operator<<(std::ostream& os, const PhysicalNumber& pNum){
+    string str = unitType(pNum->_type);
+	os<<pNum->_num << "[" << str << "]";
     return os;
 }
 std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
@@ -102,8 +104,6 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 
 // Checks if the Unit is from the same dimension
 bool isSameDimension(PhysicalNumber& pNum1, PhysicalNumber& pNum2){
-	// int a = unitType(pNum1->unit);
-	// int b = unitType(pNum2->unit);
 
 	if((pNum1->unit / 3) == (pNum2->unit / 3)){
 		return true;
@@ -111,38 +111,36 @@ bool isSameDimension(PhysicalNumber& pNum1, PhysicalNumber& pNum2){
 	return false;
 }
 
-// // 	Returns a number according to the Unit's type
-// int unitType(Unit unit){
-// 	int type;
+// 	Returns a string according to the Unit's number
+string unitType(Unit unit){
+	string type;
 
-// 	switch(unit){
-// 		case CM: type = 0;
-// 		break;
-// 		case M: type = 1;
-// 		break;
-// 		case KM: type = 2;
-// 		break;
-// 		case SEC: type = 3;
-// 		break;
-// 		case MIN: type = 4;
-// 		break;
-// 		case HOUR: type = 5;
-// 		break;
-// 		case G: type = 6;
-// 		break;
-// 		case KG: type = 7;
-// 		break;
-// 		case TON: type = 8;
-// 		break;
-// 	}
+	switch(unit){
+		case 0: type = "CM";
+		break;
+		case 1: type = "M";
+		break;
+		case 2: type = "KM";
+		break;
+		case 3: type = "SEC";
+		break;
+		case 4: type = "MIN";
+		break;
+		case 5: type = "HOUR";
+		break;
+		case 6: type = "G";
+		break;
+		case 7: type = "KG";
+		break;
+		case 8: type = "TON";
+		break;
+	}
 
-// 	return type;
-// }
+	return type;
+}
 
 
 double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
-	// int a = unitType(pNum1->unit);
-	// int b = unitType(pNum2->unit);
 
 	int type = (pNum1->unit)-(pNum2->unit);
 	int ans;
@@ -157,7 +155,7 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 				return pNum2->_num*3600;
 			
 			else
-				return pNum2->_num*100000;	
+			return pNum2->_num*100000;	
 			
 		break;
 		// need to convert 3rd option to 2nd
@@ -192,13 +190,13 @@ double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
 		// need to convert 1st option to 3rd
 		case 2:
 			if(pNum2->unit == 0)
-				return pNum2->num/100000;
+			return pNum2->num/100000;
 		
 			else if(pNum2->unit == 3)
-				return pnum2->num/3600;
+			pnum2->num/3600;
 		
 			else 
-				return pNum2->num/100000;
+			pNum2->num/100000;
 		
 		break;
 	}

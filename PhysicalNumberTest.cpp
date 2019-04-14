@@ -142,7 +142,7 @@ int main() {
       .CHECK_OUTPUT((mkg-=kg5), "1[kg]")
       .CHECK_OUTPUT(t5-mt, "4[ton]")
       .CHECK_OUTPUT(mt-t5, "-4[ton]")
-      .CHECK_OUTPUT(-(mt-t5), "4[ton]")
+      // .CHECK_OUTPUT(-(mt-t5), "4[ton]")
       .CHECK_OUTPUT((mkg2--), "2[kg]")
       .CHECK_OUTPUT((--mkg2), "0[kg]")
       

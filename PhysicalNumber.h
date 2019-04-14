@@ -46,8 +46,8 @@ namespace ariel{
         friend std::ostream& operator<<(std::ostream& os, const PhysicalNumber& pNum);
         friend std::istream& operator>>(std::istream& is, PhysicalNumber& pNum);
 
-        bool isSameDimension(PhysicalNumber& pNum1, PhysicalNumber& pNum2);
+        bool isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
         std::string unitType(Unit& unit);
-        void convert(PhysicalNumber& pNum1, PhysicalNumber& pNum2);
+        double convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
     };
 }

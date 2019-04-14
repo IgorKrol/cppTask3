@@ -1,4 +1,4 @@
-#pragma once
+
 
 #include <iostream>
 #include <sstream>
@@ -20,20 +20,20 @@ const PhysicalNumber& PhysicalNumber::operator+(){
 }
 const PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
         
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
     
     Unit nType = this._type;
-    double sum = this->_num + convert(this,pNum);
+    double sum = this->_num + convert(*this,pNum);
     return PhysicalNumber(sum,nType);
 
 }
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
-    double sum = this->_num + convert(this,pNum);
+    double sum = this->_num + convert(*this,pNum);
 	this->_num = sum;
 	return *this;
 }
@@ -41,27 +41,27 @@ const PhysicalNumber& PhysicalNumber::operator-(){
     return PhysicalNumber(-this->_num, this->_type);
 }
 const PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
     
     Unit nType = this._type;
-    double sum = this->_num - convert(this,pNum);
+    double sum = this->_num - convert(*this,pNum);
     return PhysicalNumber(sum,nType);
 }
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
-    double sum = this->_num - convert(this,pNum);
+    double sum = this->_num - convert(*this,pNum);
 	this->_num = sum;
 	return *this;
 }
 
 /* Comparor operators */
 bool ariel::operator<(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
 	if (pNum1._num < convert(pNum2)){
 		return true;
@@ -72,8 +72,8 @@ bool ariel::operator<(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
 
 }
 bool ariel::operator>(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
 	if (pNum1._num > convert(pNum2)){
 		return true;
@@ -83,8 +83,8 @@ bool ariel::operator>(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
 	}
 }
 bool ariel::operator<=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
 	if (pNum1._num <= convert(pNum2)){
 		return true;
@@ -94,8 +94,8 @@ bool ariel::operator<=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 	}
 }
 bool ariel::operator>=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
 	if (pNum1._num >= convert(pNum2)){
 		return true;
@@ -105,8 +105,8 @@ bool ariel::operator>=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 	}
 }
 bool ariel::operator!=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
 	if (pNum1._num != convert(pNum2)){
 		return true;
@@ -116,8 +116,8 @@ bool ariel::operator!=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 	}
 }
 bool ariel::operator==(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(this,pNum)) {
-        throw string ("ERROR: Different dimensions");
+    if(!isSameDimension(*this,pNum)) {
+        throw std::string ("ERROR: Different dimensions");
     }
 	if (pNum1._num == convert(pNum2)){
 		return true;
@@ -158,7 +158,7 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 }
 
 // Checks if the Unit is from the same dimension
-bool isSameDimension(PhysicalNumber& pNum1, PhysicalNumber& pNum2){
+bool isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
 	if((pNum1->unit / 3) == (pNum2->unit / 3)){
 		return true;
@@ -194,7 +194,7 @@ string unitType(Unit unit){
 }
 
 
-double convert(PhysicalNumber pNum1, PhysicalNumber pNum2){
+double convert(const PhysicalNumber pNum1,const PhysicalNumber pNum2){
 
 	int type = (pNum1->unit)-(pNum2->unit);
 	int ans;

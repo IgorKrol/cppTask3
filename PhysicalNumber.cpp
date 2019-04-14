@@ -184,7 +184,7 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 	if(t < 0){
 		cerr << "This number is invalid";
 	}
-	else if(s.front() != '[' && s.back() != ']'){
+	else if(temp.front() != '[' && temp.back() != ']'){
 		cerr << "Invalid input";
 	}
 

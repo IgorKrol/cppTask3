@@ -60,35 +60,88 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
 
 /* Comparor operators */
 bool ariel::operator<(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    return true;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+	if (pNum1._num < convert(pNum2)){
+		return true;
+	}
+	else{
+		return false;
+	}
+
 }
 bool ariel::operator>(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    return true;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+	if (pNum1._num > convert(pNum2)){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 bool ariel::operator<=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    return true;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+	if (pNum1._num <= convert(pNum2)){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 bool ariel::operator>=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    return true;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+	if (pNum1._num >= convert(pNum2)){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 bool ariel::operator!=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    return true;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+	if (pNum1._num != convert(pNum2)){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 bool ariel::operator==(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    return true;
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+	if (pNum1._num == convert(pNum2)){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 
 /* Increase/Decrease operators */
 PhysicalNumber& PhysicalNumber::operator++(){
+	this->_num++;
     return *this;
 }
 PhysicalNumber& PhysicalNumber::operator--(){
+    this->_num--;
     return *this;
 }
 const PhysicalNumber PhysicalNumber::operator++(int pNum){
+	this->_num++;
     return *this;
 }
 const PhysicalNumber PhysicalNumber::operator--(int pNum){
+    this->_num--;
     return *this;
 }
 

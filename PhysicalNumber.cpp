@@ -11,13 +11,24 @@ using namespace ariel;
 PhysicalNumber::PhysicalNumber(double num, Unit type)
 :_num(num),_type(type){} 
 
+bool isSameDimension(PhysicalNumber& pNum1, PhysicalNumber& pNum2);
+double convert(PhysicalNumber& pNum1, PhysicalNumber& pNum2);
 
 /* Math operators */
 const PhysicalNumber& PhysicalNumber::operator+(){
     return *this;
 }
 const PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
-    return *this;
+        
+    if(!isSameDimension(this,pNum)) {
+        throw string ("ERROR: Different dimensions");
+    }
+    
+    Unit nType = this._type;
+    double sum = 0;
+    sum = this->_num + convert(this,pNum);
+    return PhysicalNumber(sum,nType);
+
 }
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
     return *this;

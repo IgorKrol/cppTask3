@@ -1,4 +1,4 @@
-#pragma once
+// #pragma once
 
 #include <iostream>
 #include <sstream>
@@ -14,6 +14,9 @@ namespace ariel{
 
         public:
         PhysicalNumber(double, Unit);
+
+        double getNum(){ return _num; }
+        Unit getType(){ return _type; }
 
         /* Mathematical operators: +,-,=+,=-,(+),(-) */
         // Mathematical + operators:
@@ -46,8 +49,8 @@ namespace ariel{
         friend std::ostream& operator<<(std::ostream& os, const PhysicalNumber& pNum);
         friend std::istream& operator>>(std::istream& is, PhysicalNumber& pNum);
 
-        bool isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
-        std::string unitType(Unit& unit);
-        double convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
+        // friend std::string unitType(const int unit);
+        friend bool isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
+        friend double convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
     };
 }

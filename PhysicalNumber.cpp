@@ -18,7 +18,7 @@ const PhysicalNumber& PhysicalNumber::operator+(){
     return *this;
 }
 // Returns the sum of the data of two given objects as a new object
-const PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
+PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
         
     if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
@@ -202,7 +202,7 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 		cerr << "Invalid input";
 	}
 
-	else{	// concat the data between '[' ']' and stores the data and type on the physical number object
+	else{	// concat the data-type between '[' ']' and stores the data and type on the physical number object
 		str2 = str.substr(1, str.length()-2);
 
 			if(str2 == "cm") {pNum._num = temp; pNum._type = CM;}
@@ -245,7 +245,6 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 				return pNum2._num*3600;
 			
 			else
-
 				return pNum2._num*1000000;		// TON TO G
 		break;
 

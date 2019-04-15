@@ -149,14 +149,10 @@ PhysicalNumber& PhysicalNumber::operator--(){
 }
 //POSTFIX
 const PhysicalNumber PhysicalNumber::operator++(int pNum){
-	PhysicalNumber cpy(this->_num,this->_type);
-	cpy._num++;
-    return cpy;
+    return *new PhysicalNumber(this->_num+1,this->_type);
 }
 const PhysicalNumber PhysicalNumber::operator--(int pNum){
-    PhysicalNumber cpy(this->_num,this->_type);
-	cpy._num--;
-    return cpy;
+    return *new PhysicalNumber(this->_num-1,this->_type);
 }
 
 /* I/O operators */

@@ -24,8 +24,8 @@ namespace ariel{
         PhysicalNumber& operator+(const PhysicalNumber&);
         PhysicalNumber& operator+=(const PhysicalNumber&);
         // Mathematical - operators:
-        const PhysicalNumber& operator-();
-        const PhysicalNumber& operator-(const PhysicalNumber&);
+        PhysicalNumber& operator-();
+        PhysicalNumber& operator-(const PhysicalNumber&);
         PhysicalNumber& operator-=(const PhysicalNumber&);
         
         /* Mathematical comparison operators: <,>,<=,>=,!=,== */

@@ -39,11 +39,11 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
 	return *this;
 }
 // Unaric -
-const PhysicalNumber& PhysicalNumber::operator-(){
+PhysicalNumber& PhysicalNumber::operator-(){
     return *new PhysicalNumber(-this->_num, this->_type);
 }
 // Returns the subtraction result of the data of two given objects as a new object
-const PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
+PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
     if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }

@@ -245,6 +245,7 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 				return pNum2._num*3600;
 			
 			else
+
 				return pNum2._num*1000000;		// TON TO G
 		break;
 

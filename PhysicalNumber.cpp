@@ -140,19 +140,23 @@ bool ariel::operator==(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 /* Increase/Decrease operators */
 // PREFIX
 PhysicalNumber& PhysicalNumber::operator++(){
-	this->_num++;
+	++this->_num;
     return *this;
 }
 PhysicalNumber& PhysicalNumber::operator--(){
-    this->_num--;
+    --this->_num;
     return *this;
 }
 //POSTFIX
 const PhysicalNumber PhysicalNumber::operator++(int pNum){
-    return *new PhysicalNumber(this->_num+1,this->_type);
+	PhysicalNumber temp(this->_num,this->_type);
+	this->_num+=1;
+    return temp;
 }
 const PhysicalNumber PhysicalNumber::operator--(int pNum){
-    return *new PhysicalNumber(this->_num-1,this->_type);
+	PhysicalNumber temp(this->_num,this->_type);
+	this->_num-=1;
+    return temp;
 }
 
 /* I/O operators */

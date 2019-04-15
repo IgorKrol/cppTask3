@@ -8,16 +8,16 @@
 using namespace ariel;
 using namespace std;
 
+// Constructor
 PhysicalNumber::PhysicalNumber(double num, Unit type)
 :_num(num),_type(type){} 
 
-// bool isSameDimension(PhysicalNumber& pNum1, PhysicalNumber& pNum2);
-// double convert(PhysicalNumber& pNum1, PhysicalNumber& pNum2);
-
 /* Math operators */
+// Unaric +
 const PhysicalNumber& PhysicalNumber::operator+(){
     return *this;
 }
+// Returns the sum of the data of two given objects as a new object
 const PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
         
     if(!isSameDimension(*this,pNum)) {
@@ -29,6 +29,7 @@ const PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
     return *new PhysicalNumber(sum,nType);
 
 }
+// Stores the sum of the data of two given objects in the 1st of them
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
     if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
@@ -37,9 +38,11 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
 	this->_num = sum;
 	return *this;
 }
+// Unaric -
 const PhysicalNumber& PhysicalNumber::operator-(){
     return *new PhysicalNumber(-this->_num, this->_type);
 }
+// Returns the subtraction result of the data of two given objects as a new object
 const PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
     if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
@@ -49,6 +52,7 @@ const PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
     double sum = this->_num - convert(*this,pNum);
     return *new PhysicalNumber(sum,nType);
 }
+// Stores the subtraction result of the data of two given objects in the 1st of them
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
     if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
@@ -58,7 +62,8 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
 	return *this;
 }
 
-/* Comparor operators */
+/* Compare operators */
+// Checks if the 1st operand's data is smaller than the 2nd's
 bool ariel::operator<(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
     if(!isSameDimension(pNum1,pNum2)) {
         throw std::string ("ERROR: Different dimensions");
@@ -71,6 +76,7 @@ bool ariel::operator<(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
 	}
 
 }
+// Checks if the 1st operand's data is bigger than the 2nd's
 bool ariel::operator>(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
     if(!isSameDimension(pNum1,pNum2)) {
         throw std::string ("ERROR: Different dimensions");
@@ -82,6 +88,7 @@ bool ariel::operator>(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
 		return false;
 	}
 }
+// Checks if the 1st operand's data is smaller than the 2nd's or equal to him
 bool ariel::operator<=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
     if(!isSameDimension(pNum1,pNum2)) {
         throw std::string ("ERROR: Different dimensions");
@@ -93,6 +100,7 @@ bool ariel::operator<=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 		return false;
 	}
 }
+// Checks if the 1st operand's data is bigger than the 2nd's or equal to him
 bool ariel::operator>=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
     if(!isSameDimension(pNum1,pNum2)) {
         throw std::string ("ERROR: Different dimensions");
@@ -104,6 +112,7 @@ bool ariel::operator>=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 		return false;
 	}
 }
+// Checks if the 1st operand's data is not equal to the 2nd's
 bool ariel::operator!=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
     if(!isSameDimension(pNum1,pNum2)) {
         throw std::string ("ERROR: Different dimensions");
@@ -115,6 +124,7 @@ bool ariel::operator!=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 		return false;
 	}
 }
+// Checks if the 1st operand's data is equal to the 2nd's
 bool ariel::operator==(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
     if(!isSameDimension(pNum1,pNum2)) {
         throw std::string ("ERROR: Different dimensions");
@@ -128,6 +138,7 @@ bool ariel::operator==(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 }
 
 /* Increase/Decrease operators */
+// PREFIX
 PhysicalNumber& PhysicalNumber::operator++(){
 	this->_num++;
     return *this;
@@ -136,6 +147,7 @@ PhysicalNumber& PhysicalNumber::operator--(){
     this->_num--;
     return *this;
 }
+//POSTFIX
 const PhysicalNumber PhysicalNumber::operator++(int pNum){
 	PhysicalNumber cpy(this->_num,this->_type);
 	cpy._num++;
@@ -148,6 +160,7 @@ const PhysicalNumber PhysicalNumber::operator--(int pNum){
 }
 
 /* I/O operators */
+// Gets a Physical Number object, translate its data to a string and sends it as a stream
 std::ostream& ariel::operator<<(std::ostream& os, const PhysicalNumber& pNum){
 	string sType;
 	switch(pNum._type){
@@ -173,39 +186,40 @@ std::ostream& ariel::operator<<(std::ostream& os, const PhysicalNumber& pNum){
 	os<<pNum._num << "[" << sType << "]";
     return os;
 }
+// Gets a stream and translate it to a Physical Number (saves the data on an PN object)
 std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 	
-	string temp, temp2;
-	double t;
+	string str, str2;
+	double temp;
 
-	is>>t;
 	is>>temp;
+	is>>str;
 
-	if(t < 0){
+	if(temp < 0){	
 		cerr << "This number is invalid";
 	}
-	else if(temp.front() != '[' && temp.back() != ']'){
+	else if(str.front() != '[' && str.back() != ']'){
 		cerr << "Invalid input";
 	}
 
-	else{
-		temp2 = temp.substr(1, temp.length()-2);
+	else{	// concat the data between '[' ']' and stores the data and type on the physical number object
+		str2 = str.substr(1, str.length()-2);
 
-			if(temp2 == "cm") {pNum._num = t; pNum._type = CM;}
-			else if(temp2 == "m") {pNum._num = t; pNum._type = M;}
-			else if(temp2 == "km") {pNum._num = t; pNum._type = KM;}
-			else if(temp2 == "sec") {pNum._num = t; pNum._type = SEC;}
-			else if(temp2 == "melse in") {pNum._num = t; pNum._type = MIN;}
-			else if(temp2 == "hour") {pNum._num = t; pNum._type = HOUR;}
-			else if(temp2 == "g") {pNum._num = t; pNum._type = G;}
-			else if(temp2 == "kg") {pNum._num = t; pNum._type = KG;}
-			else if(temp2 == "ton") {pNum._num = t; pNum._type = TON;}
+			if(str2 == "cm") {pNum._num = temp; pNum._type = CM;}
+			else if(str2 == "m") {pNum._num = temp; pNum._type = M;}
+			else if(str2 == "km") {pNum._num = temp; pNum._type = KM;}
+			else if(str2 == "sec") {pNum._num = temp; pNum._type = SEC;}
+			else if(str2 == "min") {pNum._num = temp; pNum._type = MIN;}
+			else if(str2 == "hour") {pNum._num = temp; pNum._type = HOUR;}
+			else if(str2 == "g") {pNum._num = temp; pNum._type = G;}
+			else if(str2 == "kg") {pNum._num = temp; pNum._type = KG;}
+			else if(str2 == "ton") {pNum._num = temp; pNum._type = TON;}
 			else {cerr << "Invalid input";}
 		}
     return is;
 }
 
-// Checks if the Unit is from the same dimension
+// Checks if the Unit's type is from the same dimension
 bool ariel::isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
 	if((pNum1._type / 3) == (pNum2._type / 3)){
@@ -214,33 +228,8 @@ bool ariel::isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pN
 	return false;
 }
 
-// 	Returns a string according to the Unit's number
-// string ariel::unitType(const int unit){
 
-// 	switch(unit){
-// 		case 0: return "CM";
-// 		break;
-// 		case 1: return "M";
-// 		break;
-// 		case 2: return "KM";
-// 		break;
-// 		case 3: return "SEC";
-// 		break;
-// 		case 4: return "MIN";
-// 		break;
-// 		case 5: return "HOUR";
-// 		break;
-// 		case 6: return "G";
-// 		break;
-// 		case 7: return "KG";
-// 		break;
-// 		case 8: return "TON";
-// 		break;
-// 	}
-// 	return "";
-// }
-
-
+// Converts between members of the same dimension (Length: cm, m, km. Time: sec, min, hour. Mass: g, kg, ton.)
 double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
 	int type = (pNum1._type)-(pNum2._type);
@@ -250,53 +239,57 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 		// Converts 3rd option to the 1st
 		case -2: 
 			if(pNum2._type == 2) 
-				return pNum2._num*100000;
+				return pNum2._num*100000;		// KM TO CM
 	
-			else if(pNum2._type == 5) 
+			else if(pNum2._type == 5) 			// HOUR TO SEC
 				return pNum2._num*3600;
 			
 			else
-				return pNum2._num*1000000;	
+				return pNum2._num*1000000;		// TON TO G
 		break;
 
-		// Converts 3rd type to the 2nd
+		// Converts 2nd type to the 1st or 3rd type to the 2nd 
 		case -1: 
-			if(pNum2._type == 2)
-				return pNum2._num*1000;
+			if(pNum2._type == 1)				// M TO CM
+				return pNum2._num*100;
+
+			else if(pNum2._type == 2)			// KM TO M
+				return pNum2._num*1000;		
 		
-			else if(pNum2._type == 5)
+			else if(pNum2._type == 4 || pNum2._type == 5)		// MIN TO SEC OR HOUR TO MIN
 				return pNum2._num*60;
 		
 			else 
-				return pNum2._num*1000;	
+				return pNum2._num*1000;			// KG TO G OR TON TO KG
+
 		break;
 
 		// No need for conversion
-		case 0: return pNum2._num;
+		case 0: return pNum2._num;			
 		break;
 
-		// Converts 2nd type to the 1st
+		// Converts 1st type to the 2nd or 2nd type to the 3rd
 		case 1: 
-			if(pNum2._type == 1)
-				return pNum2._num*1000;
+			if(pNum2._type == 1 || pNum2._type == 2)			// CM TO METER OR M TO KM
+				return pNum2._num/1000;
 
-			else if(pNum2._type == 4)
-				return pNum2._num*60;
+			else if(pNum2._type == 4 || pNum2._type == 5)				// SEC TO MIN OR MIN TO HOUR
+				return pNum2._num/60;
 		
 			else 
-				return pNum2._num*1000;
+				return pNum2._num/1000;					// G TO KG OR KG TO TON
 		break;
 
 		// Converts 1st type to  the 3rd
 		case 2:
 			if(pNum2._type == 0)
-				return pNum2._num/100000;
+				return pNum2._num/100000;			// CM TO KM
 		
 			else if(pNum2._type == 3)
-				return pNum2._num/3600;
+				return pNum2._num/3600;				// SEC TO HOUR
 		
 			else 
-				return pNum2._num/100000;
+				return pNum2._num/1000000;			// G TO TON
 		break;
 	}
 	return 0;

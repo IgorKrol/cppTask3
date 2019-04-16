@@ -24,5 +24,6 @@
         "cmath": "cpp",
         "new": "cpp",
         "string_view": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

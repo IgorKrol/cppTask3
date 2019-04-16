@@ -20,7 +20,7 @@ namespace ariel{
 
         /* Mathematical operators: +,-,=+,=-,(+),(-) */
         // Mathematical + operators:
-        PhysicalNumber& operator+();
+        PhysicalNumber operator+();
         PhysicalNumber& operator+(const PhysicalNumber&);
         PhysicalNumber& operator+=(const PhysicalNumber&);
         // Mathematical - operators:
@@ -30,12 +30,12 @@ namespace ariel{
         
         /* Mathematical comparison operators: <,>,<=,>=,!=,== */
 
-        friend bool operator<(const PhysicalNumber&, const PhysicalNumber&);
-        friend bool operator>(const PhysicalNumber&, const PhysicalNumber&);
-        friend bool operator<=(const PhysicalNumber&, const PhysicalNumber&);
-        friend bool operator>=(const PhysicalNumber&, const PhysicalNumber&);
-        friend bool operator!=(const PhysicalNumber&, const PhysicalNumber&);
-        friend bool operator==(const PhysicalNumber&, const PhysicalNumber&);
+        bool operator<(const PhysicalNumber&);
+        bool operator>(const PhysicalNumber&);
+        bool operator<=(const PhysicalNumber&);
+        bool operator>=(const PhysicalNumber&);
+        bool operator!=(const PhysicalNumber&);
+        bool operator==(const PhysicalNumber&);
 
         /* prefix/postfix for ++/-- */
         // prefix

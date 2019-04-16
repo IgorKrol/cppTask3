@@ -14,8 +14,8 @@ PhysicalNumber::PhysicalNumber(double num, Unit type)
 
 /* Math operators */
 // Unaric +
-PhysicalNumber& PhysicalNumber::operator+(){
-    return *this;
+PhysicalNumber PhysicalNumber::operator+(){
+    return PhysicalNumber(this->_num,this->_type);
 }
 // Returns the sum of the data of two given objects as a new object
 PhysicalNumber& PhysicalNumber::operator+(const PhysicalNumber& pNum){
@@ -64,11 +64,12 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
 
 /* Compare operators */
 // Checks if the 1st operand's data is smaller than the 2nd's
-bool ariel::operator<(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(pNum1,pNum2)) {
+bool PhysicalNumber::operator<(const PhysicalNumber& pNum){
+	PhysicalNumber cpy(this->_num, this->_type);
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (pNum1._num < convert(pNum1,pNum2)){
+	if (cpy._num < convert(cpy,pNum)){
 		return true;
 	}
 	else{
@@ -77,11 +78,12 @@ bool ariel::operator<(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
 
 }
 // Checks if the 1st operand's data is bigger than the 2nd's
-bool ariel::operator>(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(pNum1,pNum2)) {
+bool PhysicalNumber::operator>(const PhysicalNumber& pNum){
+	PhysicalNumber cpy(this->_num, this->_type);
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (pNum1._num > convert(pNum1,pNum2)){
+	if (cpy._num > convert(cpy,pNum)){
 		return true;
 	}
 	else{
@@ -89,11 +91,12 @@ bool ariel::operator>(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
 	}
 }
 // Checks if the 1st operand's data is smaller than the 2nd's or equal to him
-bool ariel::operator<=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(pNum1,pNum2)) {
+bool PhysicalNumber::operator<=(const PhysicalNumber& pNum){
+	PhysicalNumber cpy(this->_num, this->_type);
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (pNum1._num <= convert(pNum1,pNum2)){
+	if (cpy._num <= convert(cpy,pNum)){
 		return true;
 	}
 	else{
@@ -101,11 +104,12 @@ bool ariel::operator<=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 	}
 }
 // Checks if the 1st operand's data is bigger than the 2nd's or equal to him
-bool ariel::operator>=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(pNum1,pNum2)) {
+bool PhysicalNumber::operator>=(const PhysicalNumber& pNum){
+	PhysicalNumber cpy(this->_num, this->_type);
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (pNum1._num >= convert(pNum1,pNum2)){
+	if (cpy._num >= convert(cpy,pNum)){
 		return true;
 	}
 	else{
@@ -113,11 +117,12 @@ bool ariel::operator>=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 	}
 }
 // Checks if the 1st operand's data is not equal to the 2nd's
-bool ariel::operator!=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(pNum1,pNum2)) {
+bool PhysicalNumber::operator!=(const PhysicalNumber& pNum){
+	PhysicalNumber cpy(this->_num, this->_type);
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (pNum1._num != convert(pNum1,pNum2)){
+	if (cpy._num != convert(cpy,pNum)){
 		return true;
 	}
 	else{
@@ -125,11 +130,12 @@ bool ariel::operator!=(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2)
 	}
 }
 // Checks if the 1st operand's data is equal to the 2nd's
-bool ariel::operator==(const PhysicalNumber& pNum1, const PhysicalNumber& pNum2){
-    if(!isSameDimension(pNum1,pNum2)) {
+bool PhysicalNumber::operator==(const PhysicalNumber& pNum){
+	PhysicalNumber cpy(this->_num, this->_type);
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (pNum1._num == convert(pNum1,pNum2)){
+	if (cpy._num == convert(cpy,pNum)){
 		return true;
 	}
 	else{

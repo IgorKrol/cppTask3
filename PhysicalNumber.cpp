@@ -46,17 +46,15 @@ PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& pNum) const{
         throw std::string ("ERROR: Different dimensions");
     }
     
-    Unit nType = this->_type;
     double sum = this->_num - convert(*this,pNum);
-    return *new PhysicalNumber(sum,nType);
+    return PhysicalNumber(sum,this->_type);
 }
 // Stores the subtraction result of the data of two given objects in the 1st of them
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
     if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-    double sum = this->_num - convert(*this,pNum);
-	this->_num = sum;
+    this->_num -= convert(*this,pNum);
 	return *this;
 }
 

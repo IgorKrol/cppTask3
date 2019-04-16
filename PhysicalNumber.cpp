@@ -211,14 +211,20 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 	string str, str2;
 	double temp;
 
+	ios::pos_type start_pos = is.tellg();
 	is>>temp;
 	is>>str;
 
-	if(temp < 0){	
-		cerr << "This number is invalid" << endl;
+	if(temp < 0){		// Rewind on error
+		is.clear();	
+		is.seekg(start_pos);	
+		is.setstate(ios::failbit);			
 	}
-	else if(str.front() != '[' && str.back() != ']'){
-		cerr << "Invalid input" << endl;
+
+	else if(str.front() != '[' && str.back() != ']'){		// Rewind on error
+		is.clear();	
+		is.seekg(start_pos);	
+		is.setstate(ios::failbit);						
 	}
 
 	else{	// concat the data-type between '[' ']' and stores the data and type on the physical number object

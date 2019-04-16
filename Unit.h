@@ -6,4 +6,7 @@ namespace ariel{
         SEC=3,MIN=4,HOUR=5,   //time
         G=6,KG=7,TON=8    //mass
     };
-}
+
+    public:
+    		bool isSameDimension(const Unit& unit,const Unit& unit2);
+};

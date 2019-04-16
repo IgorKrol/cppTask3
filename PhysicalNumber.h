@@ -50,7 +50,7 @@ namespace ariel{
         friend std::istream& operator>>(std::istream& is, PhysicalNumber& pNum);
 
         // friend std::string unitType(const int unit);
-        friend bool isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
+        // friend bool isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
         friend double convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2);
     };
 }

@@ -268,7 +268,7 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
 		// Converts 2nd type to the 1st or 3rd type to the 2nd 
 		case -1: 
-			if(pNum2._type == M_TO_CM)				
+			if(pNum2._type == M_TO_CM && pNum1._type == CM)				
 				return pNum2._num*100;
 
 			else if(pNum2._type == KM_TO_M)			

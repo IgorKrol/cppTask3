@@ -21,11 +21,11 @@ namespace ariel{
         /* Mathematical operators: +,-,=+,=-,(+),(-) */
         // Mathematical + operators:
         PhysicalNumber operator+()const;
-        PhysicalNumber& operator+(const PhysicalNumber&);
+        PhysicalNumber operator+(const PhysicalNumber&) const;
         PhysicalNumber& operator+=(const PhysicalNumber&);
         // Mathematical - operators:
         PhysicalNumber operator-()const;
-        PhysicalNumber& operator-(const PhysicalNumber&);
+        PhysicalNumber operator-(const PhysicalNumber&) const;
         PhysicalNumber& operator-=(const PhysicalNumber&);
         
         /* Mathematical comparison operators: <,>,<=,>=,!=,== */

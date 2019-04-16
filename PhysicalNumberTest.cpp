@@ -115,7 +115,7 @@ int main() {
       .CHECK_OUTPUT((dcm+=dcm), "400[cm]")
       .CHECK_OUTPUT(dcm+km5, "500400[cm]")
       .CHECK_OUTPUT((dcm++), "400[cm]")
-      .CHECK_OUTPUT(dcm, "400[cm]")
+      .CHECK_OUTPUT(dcm, "401[cm]")
       .CHECK_OUTPUT((++dcm), "402[cm]")
       .CHECK_OUTPUT(dcm-m5, "-98[cm]")
       .CHECK_OUTPUT(m5-dcm, "98[cm]")

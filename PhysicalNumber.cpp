@@ -259,8 +259,7 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
 	int elementConType = (pNum1._type)-(pNum2._type);
 
-	switch(elementConType){
-		// Converts 3rd option to the 1st
+	switch(elementConType){	// The case's number, is the degree of jump you need to take from the current element
 		case -2: 
 			if(pNum2._type == KM) 
 				return pNum2._num*100000;		
@@ -272,7 +271,6 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 				return pNum2._num*1000000;		// TON TO G
 		break;
 
-		// Converts 2nd type to the 1st or 3rd type to the 2nd 
 		case -1: 
 			if(pNum2._type == M)			
 				return pNum2._num*100;
@@ -292,7 +290,6 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 		case 0: return pNum2._num;			
 		break;
 
-		// Converts 1st type to the 2nd or 2nd type to the 3rd
 		case 1: 
 			if(pNum2._type == CM) 		
 				return pNum2._num/100;
@@ -307,7 +304,6 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 				return pNum2._num/1000;					// G TO KG OR KG TO TON
 		break;
 
-		// Converts 1st type to  the 3rd
 		case 2:
 			if(pNum2._type == CM)			
 				return pNum2._num/100000;			

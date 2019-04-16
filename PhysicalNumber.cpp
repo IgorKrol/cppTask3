@@ -288,9 +288,12 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
 		// Converts 1st type to the 2nd or 2nd type to the 3rd
 		case 1: 
-			if(pNum2._type == CM_TO_M || pNum2._type == M_TO_KM)			
+			if(pNum2._type == CM_TO_M) 		
 				return pNum2._num/100;
 
+			else if (pNum2._type == M_TO_KM)	
+				return pNum2._num/1000;
+			
 			else if(pNum2._type == SEC_TO_MIN || pNum2._type == MIN_TO_HOUR)				
 				return pNum2._num/60;
 		

@@ -8,19 +8,6 @@
 using namespace ariel;
 using namespace std;
 
-// #define CM_TO_KM 0
-// #define CM_TO_M 0
-// #define M_TO_CM 1
-// #define M_TO_KM 1
-// #define KM_TO_CM 2
-// #define KM_TO_M 2
-// #define SEC_TO_HOUR 3
-// #define SEC_TO_MIN 3
-// #define MIN_TO_SEC 4
-// #define MIN_TO_HOUR 4
-// #define HOUR_TO_SEC 5
-// #define HOUR_TO_MIN 5
-
 // Constructor
 PhysicalNumber::PhysicalNumber(double num, Unit type)
 :_num(num),_type(type){} 
@@ -36,10 +23,8 @@ PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& pNum) const{
     if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-    
-    Unit nType = this->_type;
     double sum = this->_num + convert(*this,pNum);
-    return *new PhysicalNumber(sum,nType);
+    return PhysicalNumber(sum,this->_type);
 
 }
 // Stores the sum of the data of two given objects in the 1st of them

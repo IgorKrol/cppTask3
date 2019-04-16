@@ -65,14 +65,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& pNum){
     if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	return (cpy._num < convert(cpy,pNum)
-	// if (cpy._num < convert(cpy,pNum)){
-	// 	return true;
-	// }
-	// else{
-	// 	return false;
-	// }
-
+	return (cpy._num < convert(cpy,pNum));
 }
 // Checks if the 1st operand's data is bigger than the 2nd's
 bool PhysicalNumber::operator>(const PhysicalNumber& pNum){
@@ -80,12 +73,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& pNum){
     if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (cpy._num > convert(cpy,pNum)){
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (cpy._num > convert(cpy,pNum));
 }
 // Checks if the 1st operand's data is smaller than the 2nd's or equal to him
 bool PhysicalNumber::operator<=(const PhysicalNumber& pNum){
@@ -93,12 +81,7 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& pNum){
     if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (cpy._num <= convert(cpy,pNum)){
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (cpy._num <= convert(cpy,pNum));
 }
 // Checks if the 1st operand's data is bigger than the 2nd's or equal to him
 bool PhysicalNumber::operator>=(const PhysicalNumber& pNum){
@@ -106,12 +89,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& pNum){
     if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (cpy._num >= convert(cpy,pNum)){
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (cpy._num >= convert(cpy,pNum));
 }
 // Checks if the 1st operand's data is not equal to the 2nd's
 bool PhysicalNumber::operator!=(const PhysicalNumber& pNum){
@@ -119,12 +97,7 @@ bool PhysicalNumber::operator!=(const PhysicalNumber& pNum){
     if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (cpy._num != convert(cpy,pNum)){
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (cpy._num != convert(cpy,pNum));
 }
 // Checks if the 1st operand's data is equal to the 2nd's
 bool PhysicalNumber::operator==(const PhysicalNumber& pNum){
@@ -132,12 +105,7 @@ bool PhysicalNumber::operator==(const PhysicalNumber& pNum){
     if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (cpy._num == convert(cpy,pNum)){
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (cpy._num == convert(cpy,pNum));
 }
 
 /* Increase/Decrease operators */

@@ -19,7 +19,7 @@ using namespace std;
 #define MIN_TO_SEC 4
 #define MIN_TO_HOUR 5
 #define HOUR_TO_SEC 5
-#define HOUR_TO_MIN 0
+#define HOUR_TO_MIN 5
 
 // Constructor
 PhysicalNumber::PhysicalNumber(double num, Unit type)
@@ -268,13 +268,13 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
 		// Converts 2nd type to the 1st or 3rd type to the 2nd 
 		case -1: 
-			if(pNum2._type == M_TO_CM && pNum1._type == CM)				
+			if(pNum2._type == M_TO_CM)			
 				return pNum2._num*100;
 
 			else if(pNum2._type == KM_TO_M)			
 				return pNum2._num*1000;		
 		
-			else if(pNum2._type == MIN_TO_SEC || pNum2._type == HOUR_TO_MIN)		
+			else if(pNum2._type == MIN_TO_SEC || pNum2._type == HOUR_TO_MIN)	
 				return pNum2._num*60;
 		
 			else 
@@ -294,7 +294,7 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 			else if (pNum2._type == M_TO_KM)	
 				return pNum2._num/1000;
 			
-			else if(pNum2._type == SEC_TO_MIN || pNum2._type == MIN_TO_HOUR)				
+			else if(pNum2._type == SEC_TO_MIN || pNum2._type == MIN_TO_HOUR)			
 				return pNum2._num/60;
 		
 			else 
@@ -303,10 +303,10 @@ double ariel::convert(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
 		// Converts 1st type to  the 3rd
 		case 2:
-			if(pNum2._type == CM_TO_KM)
+			if(pNum2._type == CM_TO_KM)			
 				return pNum2._num/100000;			
 		
-			else if(pNum2._type == SEC_TO_HOUR)
+			else if(pNum2._type == SEC_TO_HOUR)		
 				return pNum2._num/3600;				
 		
 			else 

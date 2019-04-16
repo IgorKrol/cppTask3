@@ -65,12 +65,13 @@ bool PhysicalNumber::operator<(const PhysicalNumber& pNum){
     if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
-	if (cpy._num < convert(cpy,pNum)){
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (cpy._num < convert(cpy,pNum)
+	// if (cpy._num < convert(cpy,pNum)){
+	// 	return true;
+	// }
+	// else{
+	// 	return false;
+	// }
 
 }
 // Checks if the 1st operand's data is bigger than the 2nd's
@@ -194,17 +195,17 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 	string str, str2;
 	double temp;
 
-	ios::pos_type start_pos = is.tellg();
+	ios::pos_type start_pos = is.tellg();	//current position in istream for rewind if necessary
 	is>>temp;
 	is>>str;
 
-	if(temp < 0){		// Rewind on error
+	if(temp < 0){
 		is.clear();	
 		is.seekg(start_pos);	
 		is.setstate(ios::failbit);			
 	}
 
-	else if(str.front() != '[' && str.back() != ']'){		// Rewind on error
+	else if(str.front() != '[' && str.back() != ']'){
 		is.clear();	
 		is.seekg(start_pos);	
 		is.setstate(ios::failbit);						
@@ -222,7 +223,12 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
 			else if(str2 == "g") {pNum._num = temp; pNum._type = G;}
 			else if(str2 == "kg") {pNum._num = temp; pNum._type = KG;}
 			else if(str2 == "ton") {pNum._num = temp; pNum._type = TON;}
-			else {cerr << "Invalid input" << endl;}
+			else {
+				cerr << "Invalid input" << endl;
+						is.clear();	
+						is.seekg(start_pos);	
+						is.setstate(ios::failbit);	
+			}
 		}
     return is;
 }

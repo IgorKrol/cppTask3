@@ -33,7 +33,7 @@ PhysicalNumber PhysicalNumber::operator+() const{
 // Returns the sum of the data of two given objects as a new object
 PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& pNum) const{
         
-    if(!isSameDimension(*this->_type,pNum->_type)) {
+    if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
     
@@ -44,7 +44,7 @@ PhysicalNumber PhysicalNumber::operator+(const PhysicalNumber& pNum) const{
 }
 // Stores the sum of the data of two given objects in the 1st of them
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
-    if(!isSameDimension(*this->_type,pNum->_type)) {
+    if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
     double sum = this->_num + convert(*this,pNum);
@@ -57,7 +57,7 @@ PhysicalNumber PhysicalNumber::operator-()const{
 }
 // Returns the subtraction result of the data of two given objects as a new object
 PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& pNum) const{
-    if(!isSameDimension(*this->_type,pNum->_type)) {
+    if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
     
@@ -67,7 +67,7 @@ PhysicalNumber PhysicalNumber::operator-(const PhysicalNumber& pNum) const{
 }
 // Stores the subtraction result of the data of two given objects in the 1st of them
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
-    if(!isSameDimension(*this->_type,pNum->_type)) {
+    if(!isSameDimension(*this,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
     double sum = this->_num - convert(*this,pNum);
@@ -79,7 +79,7 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& pNum){
 // Checks if the 1st operand's data is smaller than the 2nd's
 bool PhysicalNumber::operator<(const PhysicalNumber& pNum){
 	PhysicalNumber cpy(this->_num, this->_type);
-    if(!isSameDimension(cpy->_type,pNum->_type)) {
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
 	if (cpy._num < convert(cpy,pNum)){
@@ -93,7 +93,7 @@ bool PhysicalNumber::operator<(const PhysicalNumber& pNum){
 // Checks if the 1st operand's data is bigger than the 2nd's
 bool PhysicalNumber::operator>(const PhysicalNumber& pNum){
 	PhysicalNumber cpy(this->_num, this->_type);
-    if(!isSameDimension(cpy->_type,pNum->_type)) {
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
 	if (cpy._num > convert(cpy,pNum)){
@@ -106,7 +106,7 @@ bool PhysicalNumber::operator>(const PhysicalNumber& pNum){
 // Checks if the 1st operand's data is smaller than the 2nd's or equal to him
 bool PhysicalNumber::operator<=(const PhysicalNumber& pNum){
 	PhysicalNumber cpy(this->_num, this->_type);
-    if(!isSameDimension(cpy->_type,pNum->_type)) {
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
 	if (cpy._num <= convert(cpy,pNum)){
@@ -119,7 +119,7 @@ bool PhysicalNumber::operator<=(const PhysicalNumber& pNum){
 // Checks if the 1st operand's data is bigger than the 2nd's or equal to him
 bool PhysicalNumber::operator>=(const PhysicalNumber& pNum){
 	PhysicalNumber cpy(this->_num, this->_type);
-    if(!isSameDimension(cpy->_type,pNum->_type)) {
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
 	if (cpy._num >= convert(cpy,pNum)){
@@ -132,7 +132,7 @@ bool PhysicalNumber::operator>=(const PhysicalNumber& pNum){
 // Checks if the 1st operand's data is not equal to the 2nd's
 bool PhysicalNumber::operator!=(const PhysicalNumber& pNum){
 	PhysicalNumber cpy(this->_num, this->_type);
-    if(!isSameDimension(cpy->_type,pNum->_type)) {
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
 	if (cpy._num != convert(cpy,pNum)){
@@ -145,7 +145,7 @@ bool PhysicalNumber::operator!=(const PhysicalNumber& pNum){
 // Checks if the 1st operand's data is equal to the 2nd's
 bool PhysicalNumber::operator==(const PhysicalNumber& pNum){
 	PhysicalNumber cpy(this->_num, this->_type);
-    if(!isSameDimension(cpy->_type,pNum->_type)) {
+    if(!isSameDimension(cpy,pNum)) {
         throw std::string ("ERROR: Different dimensions");
     }
 	if (cpy._num == convert(cpy,pNum)){
@@ -238,14 +238,14 @@ std::istream& ariel::operator>>(std::istream& is, PhysicalNumber& pNum){
     return is;
 }
 
-// // Checks if the Unit's type is from the same dimension
-// bool ariel::isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
+// Checks if the Unit's type is from the same dimension
+bool ariel::isSameDimension(const PhysicalNumber& pNum1,const PhysicalNumber& pNum2){
 
-// 	if((pNum1._type / 3) == (pNum2._type / 3)){
-// 		return true;
-// 	}
-// 	return false;
-// }
+	if((pNum1._type / 3) == (pNum2._type / 3)){
+		return true;
+	}
+	return false;
+}
 
 
 // Converts between members of the same dimension (Length: cm, m, km. Time: sec, min, hour. Mass: g, kg, ton.)

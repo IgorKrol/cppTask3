@@ -14,7 +14,7 @@ PhysicalNumber::PhysicalNumber(double num, Unit type)
 
 /* Math operators */
 // Unaric +
-PhysicalNumber PhysicalNumber::operator+(){
+PhysicalNumber PhysicalNumber::operator+() const{
     return PhysicalNumber(this->_num,this->_type);
 }
 // Returns the sum of the data of two given objects as a new object
@@ -39,8 +39,8 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& pNum){
 	return *this;
 }
 // Unaric -
-PhysicalNumber& PhysicalNumber::operator-()const{
-    return *new PhysicalNumber(-this->_num, this->_type);
+PhysicalNumber PhysicalNumber::operator-()const{
+    return PhysicalNumber(-(this->_num), this->_type);
 }
 // Returns the subtraction result of the data of two given objects as a new object
 PhysicalNumber& PhysicalNumber::operator-(const PhysicalNumber& pNum){
